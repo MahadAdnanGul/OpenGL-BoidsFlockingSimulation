@@ -1,0 +1,40 @@
+Here is the link to my demo:
+
+https://youtu.be/HaGQKvGjXK0
+
+//Documentation
+The file to enter test values is flocking.txt
+
+simply add position coordinates for as many points of interests as you want. 3 coordinates per position
+
+Once you run the code, a simulation will start. Random boids will spawn at random locations with random velocities. They will be encouraged to flock together and be universally attracted to the points of interest. The system works in such a way that the points of interest show up in order (Teapot). Once enough boids are close to it, the point of interest disappears and a new one shows up.
+
+If you clear the flocking.txt file, there will be no points of interest. In this case the objects will not have any objective but will try to flock together. Each boid detects a neighbor if they are within their search radius and LOS (infront of them within 90 degrees). In this case you will notice that they will form random groups as not all boids will detect each other as they are moving in random directions initially.
+
+At any time during the simulation you can press X to spawn more random boids.  
+
+The simulations mostly relies on the reynold model. I created implementations for handling separation, cohesion and alignment. These forces are than added up to create a resultant force. There is a separate attraction force that pulls the boids towards the point of attraction while maintaining all of the other flocking principles.
+
+While I'm using my previous project structure (described below, I have disabled gravity and all physics based collision handling) so that all behavior is based on flocking.
+
+SimpleGLUT is the main file that we need to run.
+
+Other classes are set up simularly to a typical game engine:
+GameObject:
+	Rigidbody
+	Collider
+	Transform
+
+I have made my these along with my own quaternion, vector and other structs and utilities to aid me in programming this.
+
+The SimpleGlut Render function renders all the gameobjects using the gameobject->Render function
+The Update function resolves forces and handling flocking.
+
+
+Project is currently setup for win32 debug mode. There may be dependancy issues if using any other mode.
+
+Using the SOIL library for loading textures and using OPEN FBX for importing model data. 
+
+
+
+
